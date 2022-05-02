@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="result1"></div>
+  <div id="result2"></div>
+  <div id="result3"></div>
+  <div id="result4"></div>
+  <div id="result5"></div>
+  <div id="result6"></div>
+  <script>
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function sujak(level) {
+      const arr = [];
+      const skillLevel = [1, 1, 1, 1, 1];
+      for (let i = 0; i < 25; i++) {
+        let number = getRandomInt(0, 5);
+        while(skillLevel[number] === 6) {
+          number = getRandomInt(0, 5);
+        }
+        arr.push(number);
+        skillLevel[number]++;
+        if (skillLevel[0] === level) break;
+      }
+      return arr.length;
+    }
+
+    function ammiha_sujak(level) {
+      const arr = [];
+      const skillLevel = [1, 1, 1, 1, 1];
+      for (let i = 0; i < 25; i++) {
+        let number = getRandomInt(0, 5);
+        while(skillLevel[number] === 6) {
+          number = getRandomInt(0, 5);
+        }
+        arr.push(number);
+        skillLevel[number]++;
+        if (skillLevel[0] + skillLevel[1] === level) break;
+      }
+      return arr.length;
+    }
+
+    function sujak1() {
+      const arr = [];
+      for (let i = 0; i < 10000000; i++) {
+        arr.push(sujak(2));
+      }
+      const sum = arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+      });
+      const avg = sum / arr.length;
+      return avg;
+    }
+
+    function sujak2() {
+      const arr = [];
+      for (let i = 0; i < 10000000; i++) {
+        arr.push(sujak(3));
+      }
+      const sum = arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+      });
+      const avg = sum / arr.length;
+      return avg;
+    }
+
+    function sujak3() {
+      const arr = [];
+      for (let i = 0; i < 10000000; i++) {
+        arr.push(sujak(4));
+      }
+      const sum = arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+      });
+      const avg = sum / arr.length;
+      return avg;
+    }
+
+    function sujak4() {
+      const arr = [];
+      for (let i = 0; i < 10000000; i++) {
+        arr.push(sujak(5));
+      }
+      const sum = arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+      });
+      const avg = sum / arr.length;
+      return avg;
+    }
+
+    function sujak5() {
+      const arr = [];
+      for (let i = 0; i < 10000000; i++) {
+        arr.push(sujak(6));
+      }
+      const sum = arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+      });
+      const avg = sum / arr.length;
+      return avg;
+    }
+
+
+    document.getElementById('result1').innerHTML = `2렙 스작을 천만번 돌린 결과 평균은 미정석 ${sujak1()}개 입니다.`
+    document.getElementById('result2').innerHTML = `3렙 스작을 천만번 돌린 결과 평균은 미정석 ${sujak2()}개 입니다.`
+    document.getElementById('result3').innerHTML = `4렙 스작을 천만번 돌린 결과 평균은 미정석 ${sujak3()}개 입니다.`
+    document.getElementById('result4').innerHTML = `5렙 스작을 천만번 돌린 결과 평균은 미정석 ${sujak4()}개 입니다.`
+    document.getElementById('result5').innerHTML = `6렙 스작을 천만번 돌린 결과 평균은 미정석 ${sujak5()}개 입니다.`
+  </script>
+</body>
+</html>
